@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кінотеатр</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="www3.css">
+</head>
+<body>
+
+    <header>
+        <div class="left-header">
+          <div class="burger-menu-icon" onclick="toggleBurgerMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="logo">WATCHER<span>.</span></div>
+        </div>
+      
+        <nav class="nav-buttons">
+          <a href="www.html" class="header-btn">Сеанси</a>
+          <a href="login.html" class="header-btn">Увійти</a>
+          <a href="profile.html" class="header-btn">Особистий кабінет</a>
+        </nav>
+      
+        <!-- Бургер меню -->
+        <div class="burger-menu" id="burgerMenu">
+          <button class="close-btn" onclick="toggleBurgerMenu()">×</button>
+          <div class="mini-logo">WATCHER<span>.</span></div>
+        
+          <ul>
+            <li style="--delay: 0.3s;"><a href="#">Про нас</a></li>
+            <li style="--delay: 0.4s;"><a href="#">Повернення квитків</a></li>
+            <li style="--delay: 0.5s;"><a href="#">Допомога</a></li>
+        
+          </ul>
+         
+          
+          <!-- Інформаційні плитки під меню -->
+          <div class="burger-info-tiles">
+            <div class="info-tile">
+              <img src="https://cdn-icons-png.flaticon.com/512/3082/3082014.png" alt="3D">
+              <h4>3D</h4>
+              <p>Технології об’ємного зображення для видовищних спецефектів</p>
+            </div>
+            <div class="info-tile">
+              <img src="file:///C:/Users/AM/Downloads/chair-office.png" alt="LUX">
+              <h4>LUX</h4>
+              <p>Крісла-реклайнери для максимального комфорту</p>
+            </div>
+            <div class="info-tile">
+              <img src="https://cdn-icons-png.flaticon.com/512/3284/3284402.png" alt="SDH">
+              <h4>SDH</h4>
+              <p>Субтитри та тіфлокоментарі для людей з порушеннями</p>
+            </div>
+            <div class="info-tile">
+              <img src="https://cdn-icons-png.flaticon.com/512/912/912214.png" alt="UaSUB">
+              <h4>UaSUB</h4>
+              <p>Сеанси з українськими субтитрами</p>
+            </div>
+          </div>
+          
+          
+        </div>
+
+        <div class="overlay" id="overlay" onclick="toggleBurgerMenu()"></div>
+
+
+        <!-- Інформаційні плитки під меню -->
+
+      </header>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="dates">
+    <button class="date-btn active" onclick="showDay(0)">12 КВІТНЯ</button>
+    <button class="date-btn" onclick="showDay(1)">13 КВІТНЯ</button>
+    <button class="date-btn" onclick="showDay(2)">14 КВІТНЯ</button>
+  </div>
+
+  <div id="movies-container">
+    <!-- День 1 -->
+    <div class="movie-grid" id="day-0">
+      <div class="movie">
+        <a href="www2.html" class="movie-card">
+          <img src="https://i.pinimg.com/736x/73/fb/b3/73fbb3a3bca49ad869eee187fbb0d5fc.jpg" alt="Avatar">
+        
+
+          <h3>Avatar: The Way of Water</h3>
+        </a>
+        <div class="times">
+          <a href="booking5.html?movie=Avatar: The Way of Water&date=2025-04-12&time=17:10&hall=3" >
+                <button>17:10</button>
+              </a>
+              <a href="booking5.html?movie=Avatar: The Way of Water&date=2025-04-12&time=12:10&hall=4">
+                <button>12:10</button>
+              </a>
+       
+            
+        </div>
+      </div>
+      <div class="movie">
+        <a href="batman1.html" class="movie-card">
+          <img src="https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" alt="Joker">
+          <h3>Джокер</h3>
+        </a>
+        <div class="times">
+            <a href="booking5.html">
+                <button>16:45</button>
+              </a>
+              <a href="booking5.html">
+                <button>20:00</button>
+              </a>
+              
+        </div>
+      </div>
+    </div>
+
+    <!-- День 2 -->
+    <div class="movie-grid" id="day-1" style="display: none;">
+      <div class="movie">
+        <img src="https://i.pinimg.com/736x/62/85/c1/6285c1b7a38d52416947a4ebba03d861.jpg" alt="Minecraft">
+        <h3>MINECRAFT: Фільм</h3>
+        <div class="times">
+          <button>11:00</button>
+          <button>15:00</button>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="https://i.pinimg.com/564x/1c/6a/25/1c6a25bb0c82a0a6a1e497e38a6903b7.jpg" alt="Аматор">
+        <h3>Аматор</h3>
+        <div class="times">
+          <button>14:40</button>
+          <button>20:00</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- День 3 -->
+    <div class="movie-grid" id="day-2" style="display: none;">
+      <div class="movie">
+        <img src="https://i.pinimg.com/564x/43/6a/e6/436ae6d7fc84e07eb6ff6c7b41d2856f.jpg" alt="МУР">
+        <h3>16+ МУР. Ти [Романтика]</h3>
+        <div class="times">
+          <button>18:00</button>
+          <button>21:00</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    function showDay(dayIndex) {
+      const days = document.querySelectorAll('.movie-grid');
+      const buttons = document.querySelectorAll('.date-btn');
+      days.forEach((day, i) => {
+        day.style.display = i === dayIndex ? 'flex' : 'none';
+        buttons[i].classList.toggle('active', i === dayIndex);
+      });
+    }
+    function toggleBurgerMenu() {
+    const menu = document.getElementById('burgerMenu');
+    const overlay = document.getElementById('overlay');
+    menu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    }
+  
+  </script>
+
+
+<footer style="background-color: #262626; padding: 40px 20px; margin-top: 60px;">
+  <h2 style="color: white; text-align: center; margin-bottom: 30px;">Технології кінотеатру WATCHER</h2>
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+    <div style="background-color: #454444; padding: 20px; border-radius: 10px; width: 200px; text-align: center;">
+      <img src="https://cdn-icons-png.flaticon.com/512/3082/3082014.png" alt="3D" style="width: 40px; margin-bottom: 10px;">
+      <h3 style="color: white;">3D</h3>
+      <hr style="border: 0.5px solid #3a3aff;">
+      <p style="color: #aaa; font-size: 14px; margin-top: 10px;">
+        Сеанс з залученням технологій об’ємного зображення для прихильників видовищних спецефектів
+      </p>
+    </div>
+
+    <div style="background-color: #454444; padding: 20px; border-radius: 10px; width: 200px; text-align: center;">
+      <img src="C:\Users\AM\Downloads\chair-office.png" alt="LUX" style="width: 40px; margin-bottom: 10px;">
+
+      <h3 style="color: white;">LUX</h3>
+      <hr style="border: 0.5px solid #3a3aff;">
+      <p style="color: #aaa; font-size: 14px; margin-top: 10px;">
+        Сеанс на кріслах-реклайнерах, що забезпечують підвищений комфорт перегляду, для гурманів кіно
+      </p>
+    </div>
+
+    <div style="background-color: #454444; padding: 20px; border-radius: 10px; width: 200px; text-align: center;">
+      <img src="https://cdn-icons-png.flaticon.com/512/3284/3284402.png" alt="SDH" style="width: 40px; margin-bottom: 10px;">
+      <h3 style="color: white;">SDH</h3>
+      <hr style="border: 0.5px solid #3a3aff;">
+      <p style="color: #aaa; font-size: 14px; margin-top: 10px;">
+        Субтитри для осіб з порушеннями слуху та тіфлокоментарі для осіб з порушеннями зору
+      </p>
+    </div>
+
+    <div style="background-color: #454444; padding: 20px; border-radius: 10px; width: 200px; text-align: center;">
+      <img src="https://cdn-icons-png.flaticon.com/512/912/912214.png" alt="UaSUB" style="width: 40px; margin-bottom: 10px;">
+      <h3 style="color: white;">UaSUB</h3>
+      <hr style="border: 0.5px solid #3a3aff;">
+      <p style="color: #aaa; font-size: 14px; margin-top: 10px;">
+        Сеанс з українськими субтитрами
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+
+
+
+</body>
+</html>
