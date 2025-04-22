@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Особистий кабінет</title>
+  <link rel="stylesheet" href="profile.css" />
+  <style>
+  body {
+      font-family: 'Inter', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      padding: 20px;
+      margin: 0;
+    }
+    /* ——— ХЕДЕР ——— */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #1c1c1c;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #3a3aff;
+    }
+
+    nav a {
+      color: #aaa;
+      margin-left: 30px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .burger-menu-icon {
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    .burger-menu-icon .line {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    .logo, .mini-logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .logo span, .mini-logo span {
+      color: #3a3aff;
+    }
+
+    .nav-buttons a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .burger-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 250px;
+      height: 100%;
+      background: #121212;
+      transition: 0.4s ease;
+      padding: 30px 20px;
+      z-index: 1002;
+      overflow-y: auto;
+    }
+
+    .burger-menu.active {
+      left: 0;
+    }
+
+    .burger-menu .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 30px;
+      float: right;
+      cursor: pointer;
+    }
+
+    .burger-menu .mini-logo {
+      margin: 20px 0;
+    }
+
+    .burger-menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .burger-menu ul li {
+      margin: 20px 0;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .burger-menu ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .burger-menu ul li:hover a {
+      color: #3a3aff;
+    }
+
+    .burger-info-tiles {
+      margin-top: 30px;
+    }
+
+    .info-tile {
+      margin-bottom: 20px;
+    }
+
+    .info-tile img {
+      width: 40px;
+      margin-bottom: 10px;
+    }
+
+    .info-tile h4 {
+      margin: 0;
+      color: #3a3aff;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+    }
+
+    .burger-menu.active ~ .overlay {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* ——— ОСНОВНА СТРУКТУРА ——— */
+    .profile-container {
+      display: flex;
+      height: calc(100vh - 80px);
+    }
+
+    aside.sidebar {
+      width: 260px;
+      background-color: #121212;
+      padding: 30px 20px;
+      border-right: 1px solid #3a3aff;
+    }
+
+    aside.sidebar .menu a {
+      display: block;
+      padding: 12px 0;
+      color: white;
+      text-decoration: none;
+      padding-left: 10px;
+      border-left: 3px solid transparent;
+      transition: 0.3s;
+    }
+
+    aside.sidebar .menu a.active,
+    aside.sidebar .menu a:hover {
+      color: #3a3aff;
+      border-left: 3px solid #3a3aff;
+    }
+
+    aside.sidebar .logout {
+      margin-top: auto;
+      color: #ff4444;
+    }
+
+    main.profile-main {
+      flex-grow: 1;
+      padding: 40px;
+    }
+
+    main.profile-main h1 {
+      font-size: 28px;
+      margin-top: 0;
+    }
+
+    .edit-btn {
+  margin-top: 20px;
+  padding: 8px 20px;
+  background: #3a3aff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background: #2b2be0;
+}
+
+
+    .user-data {
+      margin-top: 30px;
+      line-height: 2.2;
+    }
+
+    .user-data div {
+      margin-bottom: 10px;
+    }
+
+    .warning {
+      color: #ffd600;
+    }
+
+   
+
+    .delete-account {
+      display: inline-block;
+      margin-top: 30px;
+      color: #ff4444;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+
+
+
+    .edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  max-width: 400px; /* обмежимо ширину форми для кращого вигляду */
+}
+
+.edit-form div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit-form label {
+  flex: 0 0 140px; /* фіксована ширина для рівного вирівнювання */
+  margin-right: 10px;
+}
+
+.edit-form input {
+  flex: 1;
+  padding: 10px;
+  background: #1e1e1e;
+  color: white;
+  border: 1px solid #3a3aff;
+  border-radius: 6px;
+}
+
+/* Кнопки */
+.edit-form button {
+  width: fit-content;
+  padding: 8px 16px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.edit-form button + button {
+  margin-left: 10px;
+}
+
+
+
+.cancel-btn {
+  background-color: #666;
+}
+
+.cancel-btn:hover {
+  background-color: #555;
+}
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+    <header>
+        <div class="logo">WATCHER<span>.</span></div>
+        <nav>
+          <a href="test3.html">Сеанси</a>
+          <a href="login.html">Увійти</a>
+          <a href="profile.html">Особистий кабінет</a>
+        </nav>
+      </header>
+      
+
+  <div class="profile-container">
+    <aside class="sidebar">
+      <nav class="menu">
+        <a class="active">Персональні дані</a>
+        <a>Кошик</a>
+        <a>Історія бронювань</a>
+        <a class="logout">Вийти</a>
+      </nav>
+    </aside>
+
+    <main class="profile-main">
+        <h1>Персональні дані</h1>
+      
+        <!-- Відображення профілю -->
+        <div class="user-data" id="userData">
+          <div><strong>Ім’я:</strong> <span>—</span></div>
+          <div><strong>Прізвище</strong>:</strong> <span>—</span></div>
+          <div><strong>Пошта:</strong> <span class="warning">⚠️ Додати пошту</span></div>
+          <div><strong>День народження:</strong> <span class="warning">⚠️ Вказати дату</span></div>
+          <div><strong>Дата реєстрації:</strong> <span>31 жовтня 2024</span></div>
+          <div><strong>Номер телефону:</strong> <span>+380 (95) 674 42 32</span></div>
+          <div><strong>Пароль:</strong> <span>••••••</span></div>
+          <button class="edit-btn" onclick="toggleEdit(true)">✏️ Редагувати</button>
+        </div>
+      
+        <!-- Форма редагування -->
+        <form id="editForm" class="edit-form" style="display: none;">
+          <div>
+            <label>Ім’я:</label>
+            <input type="text" placeholder="Введіть ім’я" />
+          </div>
+          <div>
+            <label>Прізвище:</label>
+            <input type="text" placeholder="Введіть прізвище" />
+          </div>
+
+
+
+          <div>
+            <label>Пошта:</label>
+            <input type="email" placeholder="example@email.com" />
+          </div>
+          <div>
+            <label>День народження:</label>
+            <input type="date" />
+          </div>
+          <div>
+            <label>Номер телефону:</label>
+            <input type="tel" placeholder="+380..." />
+          </div>
+          <div>
+            <label>Пароль:</label>
+            <input type="password" />
+          </div>
+          <div class="edit-buttons">
+            <button type="submit" class="edit-btn">💾 Зберегти</button>
+            <button type="button" class="edit-btn cancel-btn" onclick="toggleEdit(false)">❌ Скасувати</button>
+          </div>
+          
+        </form>
+      
+        <a href="#" class="delete-account">Видалити акаунт</a>
+      </main>
+      
+  </div>
+
+  <script>
+    function toggleBurgerMenu() {
+      const menu = document.getElementById('burgerMenu');
+      const overlay = document.getElementById('overlay');
+      menu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+  
+
+
+
+
+  function toggleEdit(showForm) {
+    const form = document.getElementById('editForm');
+    const data = document.getElementById('userData');
+    form.style.display = showForm ? 'flex' : 'none';
+    data.style.display = showForm ? 'none' : 'block';
+  }
+</script>
+
+
+  </script>
+</body>
+</html>
