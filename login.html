@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Увійти</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: #1e1e1e;
+      padding: 30px 35px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(58, 58, 255, 0.3);
+      width: 100%;
+      max-width: 420px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #949497;
+      font-size: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 20px; /* Збільшити відстань між полями */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #3a3aff;
+      border-radius: 6px;
+      background-color: #121212;
+      color: white;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin-top: 5px;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #3a3aff;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 15px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+
+    .login-btn:hover {
+      background-color: #2b2be0;
+      color: white;
+    }
+
+    .register-link {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .register-link a {
+      color: #3a3aff;
+      text-decoration: none;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+
+    .password-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .password-wrapper input {
+      flex: 1;
+      padding-right: 40px; /* для іконки */
+      box-sizing: border-box;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 18px;
+      color: white;
+      user-select: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h1>Увійти</h1>
+    <form action="profile.html" method="POST">
+      <div class="form-group">
+        <label for="email">Електронна пошта</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" required />
+      </div>
+      <div class="form-group">
+        <div class="password-wrapper">
+          <label for="password">Пароль:</label>
+          <input type="password" id="password" name="password" required />
+          <span class="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
+      </div>
+      <button type="submit" class="login-btn">Увійти</button>
+    </form>
+    <div class="register-link">
+      Ще немає акаунту? <a href="register.html">Зареєструватись</a>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const input = document.getElementById("password");
+      input.type = input.type === "password" ? "text" : "password";
+    }
+  </script>
+
+</body>
+</html>
